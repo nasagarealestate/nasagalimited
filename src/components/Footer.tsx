@@ -1,4 +1,6 @@
 import React from 'react';
+import { Facebook, Instagram, Twitter } from 'lucide-react';
+
 export function Footer() {
   return <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-12">
@@ -11,8 +13,40 @@ export function Footer() {
               solutions across Nigeria.
             </p>
             <p className="text-blue-400 font-medium">
-              Impossible is nothing...
+              Landlord's Bustop.
             </p>
+            <div className="mt-6">
+              <h4 className="text-lg font-semibold mb-3">Follow Us</h4>
+              <div className="flex space-x-4">
+                <a 
+                  href="https://x.com/nasaga" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-blue-400 transition duration-300 p-2 rounded-md hover:bg-gray-800"
+                  aria-label="Follow us on Twitter"
+                >
+                  <Twitter size={24} />
+                </a>
+                <a 
+                  href="https://www.instagram.com/nasagalimited/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-blue-400 transition duration-300 p-2 rounded-md hover:bg-gray-800"
+                  aria-label="Follow us on Instagram"
+                >
+                  <Instagram size={24} />
+                </a>
+                <a 
+                  href="https://www.facebook.com/p/Nasaga-Limited-100092042215356/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-blue-400 transition duration-300 p-2 rounded-md hover:bg-gray-800"
+                  aria-label="Follow us on Facebook"
+                >
+                  <Facebook size={24} />
+                </a>
+              </div>
+            </div>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
