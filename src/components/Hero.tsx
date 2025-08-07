@@ -53,13 +53,13 @@ export function Hero() {
         <div className="absolute inset-0 w-full h-full hidden md:block">
           <iframe 
             ref={videoRef}
-            src="https://www.youtube.com/embed/zkKROSgP4ck?autoplay=1&mute=1&loop=1&playlist=zkKROSgP4ck&controls=0&modestbranding=1&rel=0&iv_load_policy=3&fs=0&disablekb=1&start=0"
+            src="https://www.youtube.com/embed/zkKROSgP4ck?autoplay=1&mute=1&loop=1&playlist=zkKROSgP4ck&controls=0&modestbranding=1&rel=0&iv_load_policy=3&fs=0&disablekb=1&start=0&showinfo=0&cc_load_policy=0&playsinline=1"
             className="absolute inset-0 w-full h-full"
             style={{
-              width: '120%',
-              height: '120%',
-              left: '-10%',
-              top: '-10%',
+              width: '150%',
+              height: '150%',
+              left: '-25%',
+              top: '-25%',
               border: 'none',
               pointerEvents: 'none'
             }}
