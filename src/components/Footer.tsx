@@ -6,7 +6,13 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
-            <h2 className="text-2xl font-bold mb-4">NASAGA LIMITED</h2>
+            <div className="mb-1">
+              <img 
+                src="https://i.ibb.co/yFwPNhDY/Untitled-design.png" 
+                alt="Nasaga Limited Logo" 
+                className="h-60 w-auto mb-0"
+              />
+            </div>
             <p className="mb-4 text-gray-400 max-w-md">
               Your trusted partner for all real estate needs. With offices in
               Abuja, Kano, and Kaduna, we provide comprehensive property
