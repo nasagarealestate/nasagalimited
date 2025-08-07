@@ -1,30 +1,174 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
 export function Hero() {
-  return <section 
+  const videoRef = useRef<HTMLIFrameElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Animation trigger on component mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Parallax scroll effect for iframe
+  useEffect(() => {
+    let frameId: number;
+    
+    const handleScroll = () => {
+      frameId = requestAnimationFrame(() => {
+        if (videoRef.current) {
+          const scrolled = window.pageYOffset;
+          const parallaxSpeed = 0.3; // Reduced speed for iframe
+          const yPos = -(scrolled * parallaxSpeed);
+          videoRef.current.style.transform = `translate3d(0, ${yPos}px, 0)`;
+        }
+      });
+    };
+
+    // Respect user's motion preferences
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (!prefersReducedMotion.matches) {
+      window.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (frameId) {
+        cancelAnimationFrame(frameId);
+      }
+    };
+  }, []);
+
+  return (
+    <section 
       id="home" 
-      className="relative w-full text-white bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `linear-gradient(rgba(21, 23, 31, 0.7), rgba(58, 64, 82, 0.7)), url('https://i.ibb.co/WNrprpQv/property-3.jpg')`
-      }}
+      className="relative w-full h-screen overflow-hidden"
     >
-      <div className="container mx-auto px-4 py-20 md:py-32">
-        <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+      {/* Video Background */}
+      <div className="absolute inset-0 w-full h-full">
+        {/* Desktop Video - YouTube Embed */}
+        <div className="absolute inset-0 w-full h-full hidden md:block">
+          <iframe 
+            ref={videoRef}
+            src="https://www.youtube.com/embed/zkKROSgP4ck?autoplay=1&mute=1&loop=1&playlist=zkKROSgP4ck&controls=0&modestbranding=1&rel=0&iv_load_policy=3&fs=0&disablekb=1&start=0&showinfo=0&cc_load_policy=0&playsinline=1"
+            className="absolute inset-0 w-full h-full"
+            style={{
+              width: '150%',
+              height: '150%',
+              left: '-25%',
+              top: '-25%',
+              border: 'none',
+              pointerEvents: 'none'
+            }}
+            allow="autoplay; encrypted-media"
+            allowFullScreen={false}
+            title="Hero Background Video"
+          />
+        </div>
+
+        {/* Mobile Fallback Image */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat md:hidden"
+          style={{
+            backgroundImage: `url('https://i.ibb.co/WNrprpQv/property-3.jpg')`
+          }}
+        />
+      </div>
+
+      {/* Semi-transparent Overlay */}
+      <div 
+        className="absolute inset-0 w-full h-full"
+        style={{
+          background: 'linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%)'
+        }}
+      />
+
+      {/* Content Container */}
+      <div 
+        ref={contentRef}
+        className="relative z-10 h-full flex items-center justify-center text-center text-white px-4"
+      >
+        <div className="max-w-4xl mx-auto">
+          {/* Headline with Animation */}
+          <h1 
+            className={`font-montserrat font-bold mb-6 text-shadow-lg transition-all duration-1000 ease-out ${
+              isLoaded 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            } text-4xl md:text-5xl lg:text-6xl xl:text-7xl`}
+            style={{ 
+              textShadow: '2px 2px 4px rgba(0,0,0,0.8)' 
+            }}
+          >
             Landlord's Bustop
           </h1>
-         
-          <p className="text-lg mb-8 max-w-2xl">
-            We connect landlords with opportunities and tenants with their perfect homes.
+
+          {/* Subheading with Delayed Animation */}
+          <p 
+            className={`font-roboto font-light mb-8 max-w-3xl mx-auto transition-all duration-1000 ease-out ${
+              isLoaded 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            } text-lg md:text-xl lg:text-2xl`}
+            style={{ 
+              transitionDelay: '0.3s',
+              textShadow: '1px 1px 2px rgba(0,0,0,0.8)' 
+            }}
+          >
+            We connect landlords with opportunities and tenants with their perfect homes. 
+            Your trusted partner for comprehensive real estate solutions across Nigeria.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <a href="#properties" className="px-6 py-3 bg-white text-blue-700 font-semibold rounded-md hover:bg-blue-50 transition duration-300">
-              View Properties
+
+          {/* CTA Buttons with Delayed Animation */}
+          <div 
+            className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 ease-out ${
+              isLoaded 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}
+            style={{ transitionDelay: '0.6s' }}
+          >
+            <a 
+              href="#properties" 
+              className="group px-8 py-4 bg-white text-blue-700 font-semibold rounded-lg 
+                         hover:bg-blue-50 hover:scale-105 transform transition-all duration-300 
+                         shadow-lg hover:shadow-xl font-montserrat text-lg"
+            >
+              <span className="group-hover:tracking-wide transition-all duration-300">
+                View Properties
+              </span>
             </a>
-            <a href="#contact" className="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-md hover:bg-blue-600 transition duration-300">
-              Contact Us
+            <a 
+              href="#contact" 
+              className="group px-8 py-4 bg-transparent border-2 border-white text-white 
+                         font-semibold rounded-lg hover:bg-white hover:text-blue-700 
+                         hover:scale-105 transform transition-all duration-300 
+                         shadow-lg hover:shadow-xl font-montserrat text-lg"
+            >
+              <span className="group-hover:tracking-wide transition-all duration-300">
+                Contact Us
+              </span>
             </a>
           </div>
         </div>
       </div>
-    </section>;
+
+      {/* Scroll Indicator (Optional) */}
+      <div 
+        className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-1000 ease-out ${
+          isLoaded 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-8'
+        }`}
+        style={{ transitionDelay: '1s' }}
+      >
+        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce" />
+        </div>
+      </div>
+    </section>
+  );
 }
