@@ -103,25 +103,6 @@ export function PropertyGallery() {
   const properties: Property[] = [
     {
       id: 1,
-      title: 'Office Space - Area 11',
-      description: 'Premium office space in the heart of Area 11, Abuja. Features modern amenities, 24/7 security, backup power, and excellent connectivity.',
-      image: "https://i.ibb.co/HDnYDvJ2/office-space-for-rent-area-11.jpg",
-      images: [
-        "https://i.ibb.co/HDnYDvJ2/office-space-for-rent-area-11.jpg",
-        "https://i.ibb.co/ns0zjwhG/office-space-for-rent-at-central-area.jpg",
-        "https://i.ibb.co/gFghF6ZD/premium-office-space-for-rent.jpg"
-      ],
-      type: 'For Rent',
-      price: '₦2.5M',
-      location: 'Area 11, Abuja',
-      area: '250 sqm',
-      featured: true,
-      agent: 'Sarah Johnson',
-      agentPhone: '+234 903 456 7890',
-      baths: 2
-    },
-    {
-      id: 2,
       title: 'Office Space - Central Area',
       description: 'Modern office building with excellent facilities, prime location in Central Business District.',
       image: "https://i.ibb.co/ns0zjwhG/office-space-for-rent-at-central-area.jpg",
@@ -134,52 +115,31 @@ export function PropertyGallery() {
       price: '₦3.2M',
       location: 'Central Area, Abuja',
       area: '320 sqm',
-      featured: false,
+      featured: true,
       agent: 'Michael Chen',
       agentPhone: '+234 904 567 8901',
       baths: 3
     },
     {
-      id: 3,
-      title: '6-Unit 3-Bedroom Complex',
-      description: 'Investment opportunity with 6 units of 3-bedroom apartments. Excellent rental yield potential.',
-      image: "https://i.ibb.co/qPWxZdj/6-unit-of-3-bedroom-for-sale.jpg",
+      id: 2,
+      title: 'Maitama Prime Land',
+      description: 'Exclusive land opportunity in prestigious Maitama district. Perfect for luxury development.',
+      image: "https://i.ibb.co/0jCRfmHh/maitama-land-for-sale.jpg",
       images: [
-        "https://i.ibb.co/qPWxZdj/6-unit-of-3-bedroom-for-sale.jpg",
+        "https://i.ibb.co/0jCRfmHh/maitama-land-for-sale.jpg",
         "https://i.ibb.co/v4yBgkZp/lifecamp-flat-for-sale.jpg",
-        "https://i.ibb.co/0jCRfmHh/maitama-land-for-sale.jpg"
+        "https://i.ibb.co/qPWxZdj/6-unit-of-3-bedroom-for-sale.jpg"
       ],
       type: 'For Sale',
-      price: '₦85M',
-      location: 'Gwarinpa, Abuja',
-      beds: 3,
-      baths: 2,
-      area: '180 sqm',
+      price: '₦120M',
+      location: 'Maitama, Abuja',
+      area: '1,200 sqm',
       featured: true,
-      agent: 'David Okafor',
-      agentPhone: '+234 905 678 9012'
+      agent: 'James Okoro',
+      agentPhone: '+234 908 901 2345'
     },
     {
-      id: 4,
-      title: 'Premium Office Space',
-      description: 'State-of-the-art office complex with modern amenities, perfect for corporate headquarters.',
-      image: "https://i.ibb.co/gFghF6ZD/premium-office-space-for-rent.jpg",
-      images: [
-        "https://i.ibb.co/gFghF6ZD/premium-office-space-for-rent.jpg",
-        "https://i.ibb.co/HDnYDvJ2/office-space-for-rent-area-11.jpg",
-        "https://i.ibb.co/ns0zjwhG/office-space-for-rent-at-central-area.jpg"
-      ],
-      type: 'For Rent',
-      price: '₦4.8M',
-      location: 'Wuse 2, Abuja',
-      area: '450 sqm',
-      featured: false,
-      agent: 'Emma Williams',
-      agentPhone: '+234 906 789 0123',
-      baths: 4
-    },
-    {
-      id: 5,
+      id: 3,
       title: 'Lifecamp Apartment',
       description: 'Beautiful residential flat in serene Lifecamp environment with modern finishes.',
       image: "https://i.ibb.co/v4yBgkZp/lifecamp-flat-for-sale.jpg",
@@ -199,22 +159,62 @@ export function PropertyGallery() {
       agentPhone: '+234 907 890 1234'
     },
     {
-      id: 6,
-      title: 'Maitama Prime Land',
-      description: 'Exclusive land opportunity in prestigious Maitama district. Perfect for luxury development.',
-      image: "https://i.ibb.co/0jCRfmHh/maitama-land-for-sale.jpg",
+      id: 4,
+      title: 'Premium Office Space',
+      description: 'State-of-the-art office complex with modern amenities, perfect for corporate headquarters.',
+      image: "https://i.ibb.co/gFghF6ZD/premium-office-space-for-rent.jpg",
       images: [
-        "https://i.ibb.co/0jCRfmHh/maitama-land-for-sale.jpg",
+        "https://i.ibb.co/gFghF6ZD/premium-office-space-for-rent.jpg",
+        "https://i.ibb.co/HDnYDvJ2/office-space-for-rent-area-11.jpg",
+        "https://i.ibb.co/ns0zjwhG/office-space-for-rent-at-central-area.jpg"
+      ],
+      type: 'For Rent',
+      price: '₦4.8M',
+      location: 'Wuse 2, Abuja',
+      area: '450 sqm',
+      featured: true,
+      agent: 'Emma Williams',
+      agentPhone: '+234 906 789 0123',
+      baths: 4
+    },
+    {
+      id: 5,
+      title: '6-Unit 3-Bedroom Complex',
+      description: 'Investment opportunity with 6 units of 3-bedroom apartments. Excellent rental yield potential.',
+      image: "https://i.ibb.co/qPWxZdj/6-unit-of-3-bedroom-for-sale.jpg",
+      images: [
+        "https://i.ibb.co/qPWxZdj/6-unit-of-3-bedroom-for-sale.jpg",
         "https://i.ibb.co/v4yBgkZp/lifecamp-flat-for-sale.jpg",
-        "https://i.ibb.co/qPWxZdj/6-unit-of-3-bedroom-for-sale.jpg"
+        "https://i.ibb.co/0jCRfmHh/maitama-land-for-sale.jpg"
       ],
       type: 'For Sale',
-      price: '₦120M',
-      location: 'Maitama, Abuja',
-      area: '1,200 sqm',
+      price: '₦85M',
+      location: 'Gwarinpa, Abuja',
+      beds: 3,
+      baths: 2,
+      area: '180 sqm',
+      featured: true,
+      agent: 'David Okafor',
+      agentPhone: '+234 905 678 9012'
+    },
+    {
+      id: 6,
+      title: 'Office Space - Area 11',
+      description: 'Premium office space in the heart of Area 11, Abuja. Features modern amenities, 24/7 security, backup power, and excellent connectivity.',
+      image: "https://i.ibb.co/HDnYDvJ2/office-space-for-rent-area-11.jpg",
+      images: [
+        "https://i.ibb.co/HDnYDvJ2/office-space-for-rent-area-11.jpg",
+        "https://i.ibb.co/ns0zjwhG/office-space-for-rent-at-central-area.jpg",
+        "https://i.ibb.co/gFghF6ZD/premium-office-space-for-rent.jpg"
+      ],
+      type: 'For Rent',
+      price: '₦2.5M',
+      location: 'Area 11, Abuja',
+      area: '250 sqm',
       featured: false,
-      agent: 'James Okoro',
-      agentPhone: '+234 908 901 2345'
+      agent: 'Sarah Johnson',
+      agentPhone: '+234 903 456 7890',
+      baths: 2
     }
   ];
 
@@ -350,31 +350,35 @@ export function PropertyGallery() {
       </a>
       
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <div className="flex justify-between items-center mb-4">
+        <div className="text-center mb-16">
+          <div className="flex justify-between items-center mb-6">
             <div></div>
-            <h2 className="text-3xl font-bold text-gray-900 font-montserrat">
-              Featured Properties
-            </h2>
+            <div className="space-y-4">
+              <h2 className="text-4xl font-bold text-gray-900 font-montserrat">
+                Featured Properties
+              </h2>
+              <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
+            </div>
             {/* High-Contrast Toggle */}
             <button
               onClick={toggleHighContrast}
-              className="p-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="p-3 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-sm"
               aria-label={isHighContrast ? "Disable high contrast mode" : "Enable high contrast mode"}
               title={isHighContrast ? "Disable high contrast" : "Enable high contrast"}
             >
               <Contrast size={20} className={isHighContrast ? "text-black" : "text-gray-600"} />
             </button>
           </div>
-          <p className="text-gray-600 max-w-2xl mx-auto font-roboto">
-            Discover our exclusive selection of premium properties across Nigeria
+          <p className="text-gray-600 max-w-3xl mx-auto font-opensans text-lg leading-relaxed">
+            Discover our exclusive selection of premium properties across Nigeria, 
+            carefully curated to meet your real estate investment and housing needs.
           </p>
         </div>
 
-        {/* Responsive Card Grid with Enhanced Mobile-First Design */}
+        {/* Enhanced Responsive Grid with Improved Spacing */}
         <div 
           id="property-grid"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8"
           role="grid"
           aria-label="Property listings"
         >
@@ -385,7 +389,7 @@ export function PropertyGallery() {
               tabIndex={0}
               role="button"
               aria-label={`View details for ${property.title}. Price: ${property.price}. Location: ${property.location}.`}
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-102 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-4 border border-gray-100"
               onClick={() => {
                 modalTriggerRef.current = document.activeElement as HTMLDivElement;
                 openModal(property);
@@ -471,32 +475,67 @@ export function PropertyGallery() {
                 </div>
               </div>
 
-              {/* Card Content */}
-              <div className="p-4">
-                <p className="text-gray-600 text-sm mb-4 font-roboto line-clamp-2">
+              {/* Enhanced Card Content with Better Spacing */}
+              <div className="p-6 space-y-4">
+                {/* Property Title & Location */}
+                <div className="space-y-2">
+                  <h3 className="text-xl font-bold text-gray-900 font-montserrat leading-tight group-hover:text-blue-700 transition-colors duration-200">
+                    {property.title}
+                  </h3>
+                  <div className="flex items-center text-gray-500 text-sm font-medium">
+                    <MapPinIcon size={16} className="mr-2 text-blue-500" />
+                    <span className="font-opensans">{property.location}</span>
+                  </div>
+                </div>
+
+                {/* Property Description */}
+                <p className="text-gray-600 text-sm leading-relaxed font-opensans line-clamp-2">
                   {property.description}
                 </p>
 
-                {/* Property Details */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
+                {/* Property Details with Enhanced Icons */}
+                <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+                  <div className="flex items-center space-x-6">
                     {property.beds && (
-                      <div className="flex items-center text-gray-500 text-sm font-roboto font-medium">
-                        <BedIcon size={16} className="mr-1" />
-                        <span>{property.beds}</span>
+                      <div className="flex items-center text-gray-600 text-sm font-medium">
+                        <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mr-2">
+                          <BedIcon size={14} className="text-blue-600" />
+                        </div>
+                        <span className="font-montserrat font-semibold">{property.beds}</span>
+                        <span className="text-xs text-gray-400 ml-1">beds</span>
                       </div>
                     )}
                     {property.baths && (
-                      <div className="flex items-center text-gray-500 text-sm font-roboto font-medium">
-                        <BathIcon size={16} className="mr-1" />
-                        <span>{property.baths}</span>
+                      <div className="flex items-center text-gray-600 text-sm font-medium">
+                        <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mr-2">
+                          <BathIcon size={14} className="text-blue-600" />
+                        </div>
+                        <span className="font-montserrat font-semibold">{property.baths}</span>
+                        <span className="text-xs text-gray-400 ml-1">baths</span>
                       </div>
                     )}
-                    <div className="flex items-center text-gray-500 text-sm font-roboto font-medium">
-                      <Square size={16} className="mr-1" />
-                      <span>{property.area}</span>
+                    <div className="flex items-center text-gray-600 text-sm font-medium">
+                      <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mr-2">
+                        <Square size={14} className="text-blue-600" />
+                      </div>
+                      <span className="font-montserrat font-semibold">{property.area}</span>
                     </div>
                   </div>
+                </div>
+
+                {/* Price & CTA */}
+                <div className="flex items-center justify-between pt-4">
+                  <div className="space-y-1">
+                    <p className="text-2xl font-bold text-gray-900 font-montserrat">
+                      {property.price}
+                    </p>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 font-montserrat">
+                      {property.type}
+                    </span>
+                  </div>
+                  <button className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 font-montserrat text-sm">
+                    View Details
+                  </button>
                 </div>
               </div>
             </div>

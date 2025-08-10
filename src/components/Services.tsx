@@ -1,5 +1,4 @@
 import React from 'react';
-import { HomeIcon, KeyIcon, BuildingIcon, WrenchIcon, DollarSignIcon } from 'lucide-react';
 import { ServiceCard } from './ServiceCard';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
@@ -17,27 +16,100 @@ export function Services() {
 
   const services: Service[] = [
     {
-      icon: <HomeIcon className="h-10 w-10 text-blue-600" />,
+      icon: (
+        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors duration-300">
+          <svg 
+            className="w-8 h-8 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" 
+            fill="currentColor" 
+            viewBox="0 0 24 24"
+            role="img"
+            aria-label="Property Sales Icon"
+          >
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+          </svg>
+        </div>
+      ),
       title: 'Property Sales',
       description: 'Find your dream home or sell your property with our expert guidance and comprehensive market knowledge.'
     },
     {
-      icon: <KeyIcon className="h-10 w-10 text-blue-600" />,
+      icon: (
+        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors duration-300">
+          <svg 
+            className="w-8 h-8 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" 
+            fill="none" 
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            role="img"
+            aria-label="Property Leasing Icon"
+          >
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9,22 9,12 15,12 15,22"/>
+          </svg>
+        </div>
+      ),
       title: 'Property Leasing',
       description: 'Flexible leasing options for residential and commercial properties with transparent terms and professional support.'
     },
     {
-      icon: <DollarSignIcon className="h-10 w-10 text-blue-600" />,
+      icon: (
+        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors duration-300">
+          <svg 
+            className="w-8 h-8 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" 
+            fill="none" 
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            role="img"
+            aria-label="Investment Opportunities Icon"
+          >
+            <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+          </svg>
+        </div>
+      ),
       title: 'Investment Opportunities',
       description: 'Discover high-return real estate investment opportunities across Nigeria with detailed market analysis.'
     },
     {
-      icon: <BuildingIcon className="h-10 w-10 text-blue-600" />,
+      icon: (
+        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors duration-300">
+          <svg 
+            className="w-8 h-8 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" 
+            fill="none" 
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            role="img"
+            aria-label="Property Development Icon"
+          >
+            <path d="M3 21h18"/>
+            <path d="M5 21V7l8-4v18"/>
+            <path d="M19 21V11l-6-4"/>
+          </svg>
+        </div>
+      ),
       title: 'Property Development',
       description: 'From concept to completion, we handle all aspects of property development with innovative design solutions.'
     },
     {
-      icon: <WrenchIcon className="h-10 w-10 text-blue-600" />,
+      icon: (
+        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors duration-300">
+          <svg 
+            className="w-8 h-8 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" 
+            fill="none" 
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            role="img"
+            aria-label="Facility Management Icon"
+          >
+            <path d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2z"/>
+            <path d="M21 11h-4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2z"/>
+            <path d="M7 21V8a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v13"/>
+          </svg>
+        </div>
+      ),
       title: 'Facility Management',
       description: "Comprehensive management services to maintain your property's value and ensure optimal performance."
     }
