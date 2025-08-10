@@ -41,13 +41,13 @@ export function Header() {
     <header className="fixed top-0 z-50 w-full bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 shadow-lg backdrop-blur-sm">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex-1 flex justify-center">
+          <div className="flex-shrink-0">
             <h1 className="text-3xl font-bold text-white tracking-wide font-montserrat">
               NASAGA <span className="text-blue-300">LIMITED</span>
             </h1>
           </div>
           
-          <nav className="hidden lg:flex items-center space-x-8 absolute right-6">
+          <nav className="hidden lg:flex items-center space-x-8">
             {navigationItems.map((item, index) => (
               item.type === 'link' ? (
                 <Link 

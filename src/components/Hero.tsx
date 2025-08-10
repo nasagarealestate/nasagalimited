@@ -56,7 +56,7 @@ export function Hero() {
         <div className="absolute inset-0 w-full h-full hidden md:block">
           <iframe 
             ref={videoRef}
-            src="https://www.youtube.com/embed/zkKROSgP4ck?autoplay=1&mute=1&loop=1&playlist=zkKROSgP4ck&controls=0&modestbranding=1&rel=0&iv_load_policy=3&fs=0&disablekb=1&start=0&showinfo=0&cc_load_policy=0&playsinline=1"
+            src="https://www.youtube.com/embed/zkKROSgP4ck?autoplay=1&mute=1&loop=1&playlist=zkKROSgP4ck&controls=0&showinfo=0&rel=0&fs=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1"
             className="absolute inset-0 w-full h-full"
             style={{
               width: '150%',
@@ -66,7 +66,7 @@ export function Hero() {
               border: 'none',
               pointerEvents: 'none'
             }}
-            allow="autoplay; encrypted-media"
+            allow="autoplay; encrypted-media; accelerometer; gyroscope; picture-in-picture"
             allowFullScreen={false}
             title="Hero Background Video"
           />
