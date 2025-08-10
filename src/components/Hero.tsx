@@ -1,9 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export function Hero() {
   const videoRef = useRef<HTMLIFrameElement>(null);
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [mobileVideoLoaded, setMobileVideoLoaded] = useState(false);
+  const [mobileVideoError, setMobileVideoError] = useState(false);
 
   // Animation trigger on component mount
   useEffect(() => {
@@ -53,7 +56,7 @@ export function Hero() {
         <div className="absolute inset-0 w-full h-full hidden md:block">
           <iframe 
             ref={videoRef}
-            src="https://www.youtube.com/embed/zkKROSgP4ck?autoplay=1&mute=1&loop=1&playlist=zkKROSgP4ck&controls=0&modestbranding=1&rel=0&iv_load_policy=3&fs=0&disablekb=1&start=0&showinfo=0&cc_load_policy=0&playsinline=1"
+            src="https://www.youtube.com/embed/zkKROSgP4ck?autoplay=1&mute=1&loop=1&playlist=zkKROSgP4ck&controls=0&showinfo=0&rel=0&fs=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1"
             className="absolute inset-0 w-full h-full"
             style={{
               width: '150%',
@@ -63,26 +66,87 @@ export function Hero() {
               border: 'none',
               pointerEvents: 'none'
             }}
-            allow="autoplay; encrypted-media"
+            allow="autoplay; encrypted-media; accelerometer; gyroscope; picture-in-picture"
             allowFullScreen={false}
             title="Hero Background Video"
           />
         </div>
 
-        {/* Mobile Fallback Image */}
-        <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat md:hidden"
-          style={{
-            backgroundImage: `url('https://i.ibb.co/WNrprpQv/property-3.jpg')`
-          }}
-        />
+        {/* Mobile Video Background */}
+        <div className="absolute inset-0 w-full h-full md:hidden">
+          {!mobileVideoError ? (
+            <video 
+              ref={mobileVideoRef}
+              className="absolute inset-0 w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              controls={false}
+              webkit-playsinline="true"
+              onLoadedData={() => {
+                setMobileVideoLoaded(true);
+                console.log('Mobile video loaded successfully');
+                // Ensure video is muted when loaded
+                if (mobileVideoRef.current) {
+                  mobileVideoRef.current.muted = true;
+                  mobileVideoRef.current.volume = 0;
+                }
+              }}
+              onError={(e) => {
+                console.error('Mobile video failed to load:', e);
+                setMobileVideoError(true);
+              }}
+              onCanPlay={() => {
+                console.log('Mobile video can play');
+                if (mobileVideoRef.current) {
+                  // Ensure video is muted before playing
+                  mobileVideoRef.current.muted = true;
+                  mobileVideoRef.current.volume = 0;
+                  
+                  // Attempt to play with error handling
+                  const playPromise = mobileVideoRef.current.play();
+                  if (playPromise !== undefined) {
+                    playPromise
+                      .then(() => {
+                        console.log('Mobile video started playing successfully');
+                      })
+                      .catch(e => {
+                        console.error('Failed to play mobile video:', e);
+                        // If autoplay fails, try to play on user interaction
+                        document.addEventListener('touchstart', () => {
+                          if (mobileVideoRef.current) {
+                            mobileVideoRef.current.play().catch(console.error);
+                          }
+                        }, { once: true });
+                      });
+                  }
+                }
+              }}
+              poster="https://i.ibb.co/WNrprpQv/property-3.jpg"
+            >
+              <source src="/mobile%20video%20background.mp4" type="video/mp4" />
+              {/* Fallback for browsers that don't support video */}
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            /* Fallback background image if video fails */
+            <div 
+              className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: `url('https://i.ibb.co/WNrprpQv/property-3.jpg')`
+              }}
+            />
+          )}
+        </div>
       </div>
 
-      {/* Semi-transparent Overlay */}
+      {/* Enhanced Dark Overlay for Better Text Visibility */}
       <div 
         className="absolute inset-0 w-full h-full"
         style={{
-          background: 'linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%)'
+          background: 'linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 100%)'
         }}
       />
 
