@@ -42,7 +42,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
         cursor-pointer transition-all duration-300 ease-out
         hover:scale-[1.03] hover:shadow-2xl hover:bg-white/90
         focus:scale-[1.03] focus:shadow-2xl focus:bg-white/90
-        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+        focus:outline-none focus:ring-2 focus:ring-homelight-secondary focus:ring-offset-2
         transform-gpu
         ${hasIntersected 
           ? 'opacity-100 translate-y-0' 
@@ -64,7 +64,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       onClick={onLearnMore}
     >
       {/* Glassmorphism background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-white/30 rounded-2xl opacity-60" />
+      <div className="absolute inset-0 bg-gradient-to-br from-homelight-primary/10 to-white/30 rounded-2xl opacity-60" />
       
       {/* Content */}
       <div className="relative z-10">
@@ -77,21 +77,21 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
         </div>
 
         {/* Title */}
-        <h3 className="text-xl font-semibold mb-3 text-gray-900 font-montserrat">
+        <h3 className="text-xl font-semibold mb-3 text-homelight-text font-open-sans">
           {title}
         </h3>
 
         {/* Description */}
         <p 
           id={`service-desc-${index}`}
-          className="text-gray-600 font-roboto leading-relaxed mb-4"
+          className="text-gray-600 font-open-sans leading-relaxed mb-4"
         >
           {description}
         </p>
 
         {/* Learn More CTA - appears on hover/focus */}
         <div className={`
-          flex items-center text-blue-600 font-medium font-roboto
+          flex items-center text-homelight-primary font-medium font-open-sans
           transition-all duration-300 ease-out
           ${isActive 
             ? 'opacity-100 translate-y-0' 
@@ -111,7 +111,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
 
       {/* Hover glow effect */}
       <div className={`
-        absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/20 to-purple-400/20
+        absolute inset-0 rounded-2xl bg-gradient-to-r from-homelight-primary/20 to-homelight-secondary/20
         transition-opacity duration-300
         ${isActive ? 'opacity-100' : 'opacity-0'}
       `} />

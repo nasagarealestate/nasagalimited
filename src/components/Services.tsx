@@ -17,9 +17,9 @@ export function Services() {
   const services: Service[] = [
     {
       icon: (
-        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors duration-300">
+        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-homelight-primary/10 rounded-full group-hover:bg-homelight-primary/20 transition-colors duration-300">
           <svg 
-            className="w-8 h-8 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" 
+            className="w-8 h-8 text-homelight-primary group-hover:text-homelight-primary transition-colors duration-300" 
             fill="currentColor" 
             viewBox="0 0 24 24"
             role="img"
@@ -34,9 +34,9 @@ export function Services() {
     },
     {
       icon: (
-        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors duration-300">
+        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-homelight-primary/10 rounded-full group-hover:bg-homelight-primary/20 transition-colors duration-300">
           <svg 
-            className="w-8 h-8 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" 
+            className="w-8 h-8 text-homelight-primary group-hover:text-homelight-primary transition-colors duration-300" 
             fill="none" 
             stroke="currentColor"
             strokeWidth="2"
@@ -73,9 +73,9 @@ export function Services() {
     },
     {
       icon: (
-        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors duration-300">
+        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-homelight-primary/10 rounded-full group-hover:bg-homelight-primary/20 transition-colors duration-300">
           <svg 
-            className="w-8 h-8 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" 
+            className="w-8 h-8 text-homelight-primary group-hover:text-homelight-primary transition-colors duration-300" 
             fill="none" 
             stroke="currentColor"
             strokeWidth="2"
@@ -94,9 +94,9 @@ export function Services() {
     },
     {
       icon: (
-        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors duration-300">
+        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-homelight-primary/10 rounded-full group-hover:bg-homelight-primary/20 transition-colors duration-300">
           <svg 
-            className="w-8 h-8 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" 
+            className="w-8 h-8 text-homelight-primary group-hover:text-homelight-primary transition-colors duration-300" 
             fill="none" 
             stroke="currentColor"
             strokeWidth="2"
@@ -125,28 +125,22 @@ export function Services() {
     <section 
       ref={sectionRef}
       id="services" 
-      className="py-16 lg:py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-gray-50 relative overflow-hidden"
+      className="py-20 lg:py-28 bg-white relative overflow-hidden"
     >
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
-      </div>
-
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className={`
-          text-center mb-12 lg:mb-16 transition-all duration-800 ease-out
+          text-center mb-16 lg:mb-20 transition-all duration-800 ease-out
           ${sectionVisible 
             ? 'opacity-100 translate-y-0' 
             : 'opacity-0 translate-y-8'
           }
         `}>
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 font-montserrat">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 font-montserrat tracking-tight">
             Our Services
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg font-roboto leading-relaxed">
+          <div className="w-24 h-1 bg-homelight-primary mx-auto rounded-full mb-6"></div>
+          <p className="text-gray-600 max-w-3xl mx-auto text-xl font-opensans leading-relaxed">
             Comprehensive real estate solutions tailored to meet your needs with 
             unmatched expertise and personalized service.
           </p>
@@ -157,7 +151,7 @@ export function Services() {
           {/* Skip link for keyboard users */}
           <a 
             href="#services-grid"
-            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-lg z-50"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-homelight-primary text-white px-4 py-2 rounded-lg z-50"
           >
             Skip to services grid
           </a>
@@ -165,7 +159,7 @@ export function Services() {
           {/* Services Grid - Clean Layout */}
           <div 
             id="services-grid"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 place-items-center"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 place-items-center"
             role="grid"
             aria-label="Our services"
           >
@@ -183,20 +177,20 @@ export function Services() {
             
             {/* Ready to Get Started? CTA Card as 6th item */}
             <div className="w-full max-w-sm">
-              <div className="bg-white/80 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-xl h-full flex flex-col justify-center text-center">
+              <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col justify-center text-center">
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-montserrat">
                   Ready to Get Started?
                 </h3>
-                <p className="text-gray-600 mb-6 font-roboto text-sm leading-relaxed">
+                <p className="text-gray-600 mb-6 font-opensans text-sm leading-relaxed">
                   Let's discuss how we can help you achieve your real estate goals with our comprehensive services.
                 </p>
                 <button 
                   onClick={() => handleLearnMore('Contact')}
                   className="
-                    inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg 
-                    hover:bg-blue-700 focus:bg-blue-700 transition-colors duration-200
-                    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-                    font-roboto text-sm
+                    inline-flex items-center justify-center px-6 py-3 bg-homelight-primary text-white font-semibold rounded-lg 
+                    hover:bg-homelight-primary/90 focus:bg-homelight-primary/90 transition-colors duration-200
+                    focus:outline-none focus:ring-2 focus:ring-homelight-primary focus:ring-offset-2
+                    font-opensans text-sm
                   "
                 >
                   Contact Us Today
