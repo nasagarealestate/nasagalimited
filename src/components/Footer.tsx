@@ -6,11 +6,11 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
-            <div className="mb-1">
+            <div className="mb-4">
               <img 
-                src="https://i.ibb.co/yFwPNhDY/Untitled-design.png" 
+                src="/logo.svg" 
                 alt="Nasaga Limited Logo" 
-                className="h-60 w-auto mb-0"
+                className="h-32 w-auto mb-4"
               />
             </div>
             <p className="mb-4 text-gray-400 max-w-md">
