@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Heart, Share2, X, ChevronLeft, ChevronRight, MapPin as MapPinIcon, Phone, Calendar, Bed as BedIcon, Bath as BathIcon, Square, Eye, Contrast } from 'lucide-react';
+import { Share2, X, ChevronLeft, ChevronRight, MapPin as MapPinIcon, Phone, Calendar, Bed as BedIcon, Bath as BathIcon, Square, Contrast } from 'lucide-react';
 import { useLazyImage } from '../hooks/useLazyImage';
 
 // LazyImage component for performance optimization
@@ -56,21 +56,16 @@ interface Property {
 
 export function PropertyGallery() {
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
-  const [wishlistItems, setWishlistItems] = useState<number[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHighContrast, setIsHighContrast] = useState(false);
+  const [showAllProperties, setShowAllProperties] = useState(false);
   const [focusedCardIndex, setFocusedCardIndex] = useState<number>(-1);
   const modalTriggerRef = useRef<HTMLDivElement | null>(null);
   const modalRef = useRef<HTMLDivElement | null>(null);
 
-  // Load wishlist and high-contrast preference from localStorage on component mount
+  // Load high-contrast preference from localStorage on component mount
   useEffect(() => {
-    const savedWishlist = localStorage.getItem('propertyWishlist');
-    if (savedWishlist) {
-      setWishlistItems(JSON.parse(savedWishlist));
-    }
-
     // Load high-contrast preference
     const savedHighContrast = localStorage.getItem('highContrastMode');
     if (savedHighContrast === 'true') {
@@ -84,11 +79,6 @@ export function PropertyGallery() {
       document.documentElement.classList.add('high-contrast');
     }
   }, []);
-
-  // Save wishlist to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem('propertyWishlist', JSON.stringify(wishlistItems));
-  }, [wishlistItems]);
 
   // Save high-contrast preference to localStorage whenever it changes
   useEffect(() => {
@@ -267,17 +257,6 @@ export function PropertyGallery() {
     setIsHighContrast(prev => !prev);
   }, []);
 
-  // Wishlist functions
-  const toggleWishlist = (propertyId: number) => {
-    setWishlistItems(prev => 
-      prev.includes(propertyId) 
-        ? prev.filter(id => id !== propertyId)
-        : [...prev, propertyId]
-    );
-  };
-
-  const isInWishlist = (propertyId: number) => wishlistItems.includes(propertyId);
-
   // Share function
   const handleShare = async (property: Property) => {
     const shareData = {
@@ -340,36 +319,36 @@ export function PropertyGallery() {
       );
     }
   };
-  return <section id="properties" className="py-16 bg-gray-50">
+  return <section id="properties" className="py-20 bg-white">
       {/* Skip Navigation Link */}
       <a 
         href="#property-grid"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-lg z-50"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-homelight-primary text-white px-4 py-2 rounded-lg z-50"
       >
         Skip to property grid
       </a>
       
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <div className="flex justify-between items-center mb-6">
+        <div className="text-center mb-20">
+          <div className="flex justify-between items-center mb-8">
             <div></div>
-            <div className="space-y-4">
-              <h2 className="text-4xl font-bold text-gray-900 font-montserrat">
+            <div className="space-y-6">
+              <h2 className="text-3xl font-bold text-gray-900 font-montserrat tracking-tight">
                 Featured Properties
               </h2>
-              <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
+              <div className="w-24 h-1 bg-homelight-primary mx-auto rounded-full"></div>
             </div>
             {/* High-Contrast Toggle */}
             <button
               onClick={toggleHighContrast}
-              className="p-3 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-sm"
+              className="p-3 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-homelight-primary focus:ring-offset-2 shadow-sm"
               aria-label={isHighContrast ? "Disable high contrast mode" : "Enable high contrast mode"}
               title={isHighContrast ? "Disable high contrast" : "Enable high contrast"}
             >
               <Contrast size={20} className={isHighContrast ? "text-black" : "text-gray-600"} />
             </button>
           </div>
-          <p className="text-gray-600 max-w-3xl mx-auto font-opensans text-lg leading-relaxed">
+          <p className="text-gray-600 max-w-4xl mx-auto font-opensans text-xl leading-relaxed">
             Discover our exclusive selection of premium properties across Nigeria, 
             carefully curated to meet your real estate investment and housing needs.
           </p>
@@ -378,112 +357,42 @@ export function PropertyGallery() {
         {/* Enhanced Responsive Grid with Improved Spacing */}
         <div 
           id="property-grid"
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 md:gap-8"
           role="grid"
           aria-label="Property listings"
         >
-          {properties.map((property, index) => (
+          {(showAllProperties ? properties : properties.slice(0, 4)).map((property, index) => (
             <div 
               key={property.id}
               ref={focusedCardIndex === index ? (ref) => ref?.focus() : null}
               tabIndex={0}
               role="button"
               aria-label={`View details for ${property.title}. Price: ${property.price}. Location: ${property.location}.`}
-              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-4 border border-gray-100"
+              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-2 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-homelight-primary focus:ring-offset-4 border border-gray-100"
               onClick={() => {
                 modalTriggerRef.current = document.activeElement as HTMLDivElement;
                 openModal(property);
               }}
               onKeyDown={(e) => handleCardKeyDown(e, property)}
             >
-              {/* Image Container with 4:3 Aspect Ratio and Lazy Loading */}
-              <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
+              {/* Image Container with 3:2 Aspect Ratio and Lazy Loading */}
+              <div className="relative overflow-hidden" style={{ aspectRatio: '3/2' }}>
                 <LazyImage
                   src={property.images[0]}
                   alt={property.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                
-                {/* Enhanced Gradient Overlay for Better Contrast */}
-                <div 
-                  className="absolute inset-0"
-                  style={{
-                    background: 'linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(0,0,0,0.7) 70%, rgba(0,0,0,0.9) 100%)'
-                  }}
-                />
-
-                {/* Additional overlay for high-contrast mode */}
-                <div className={`absolute inset-0 transition-opacity duration-200 ${isHighContrast ? 'bg-black/50' : 'bg-transparent'}`} />
-
-                {/* Wishlist & Share Icons */}
-                <div className="absolute top-4 left-4 flex space-x-2">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      toggleWishlist(property.id);
-                    }}
-                    aria-label={isInWishlist(property.id) ? `Remove ${property.title} from wishlist` : `Add ${property.title} to wishlist`}
-                    className={`p-2 rounded-full backdrop-blur-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-1 min-w-[40px] min-h-[40px] ${
-                      isInWishlist(property.id) 
-                        ? 'bg-red-500/90 text-white' 
-                        : 'bg-white/90 text-gray-600 hover:bg-red-500/90 hover:text-white'
-                    }`}
-                  >
-                    <Heart size={16} fill={isInWishlist(property.id) ? 'currentColor' : 'none'} />
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleShare(property);
-                    }}
-                    aria-label={`Share ${property.title}`}
-                    className="p-2 rounded-full bg-white/90 text-gray-600 hover:bg-blue-500/90 hover:text-white backdrop-blur-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-1 min-w-[40px] min-h-[40px]"
-                  >
-                    <Share2 size={16} />
-                  </button>
-                </div>
-
-                {/* Property Type & Price Badges */}
-                <div className="absolute top-4 right-4 flex flex-col space-y-2">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold font-roboto bg-blue-600/90 text-white backdrop-blur-sm">
-                    {property.type}
-                  </span>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold font-roboto bg-white/90 text-gray-900 backdrop-blur-sm">
-                    {property.price}
-                  </span>
-                </div>
-
-                {/* View Details Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <button className="px-6 py-3 bg-white/95 text-gray-900 font-semibold rounded-lg backdrop-blur-sm shadow-lg hover:bg-white transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
-                    <Eye size={16} className="inline mr-2" />
-                    View Details
-                  </button>
-                </div>
-
-                {/* Property Title Overlay with Enhanced Contrast */}
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className={`text-lg font-bold text-white mb-1 font-montserrat ${isHighContrast ? 'text-shadow-lg' : ''}`}
-                      style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.5)' }}>
-                    {property.title}
-                  </h3>
-                  <div className={`flex items-center text-white/90 text-sm font-roboto ${isHighContrast ? 'text-shadow' : ''}`}
-                       style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
-                    <MapPinIcon size={14} className="mr-1" />
-                    <span>{property.location}</span>
-                  </div>
-                </div>
               </div>
 
               {/* Enhanced Card Content with Better Spacing */}
-              <div className="p-6 space-y-4">
+              <div className="p-4 space-y-3">
                 {/* Property Title & Location */}
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold text-gray-900 font-montserrat leading-tight group-hover:text-blue-700 transition-colors duration-200">
+                <div className="space-y-1">
+                  <h3 className="text-lg font-bold text-gray-900 font-montserrat leading-tight group-hover:text-blue-700 transition-colors duration-200">
                     {property.title}
                   </h3>
                   <div className="flex items-center text-gray-500 text-sm font-medium">
-                    <MapPinIcon size={16} className="mr-2 text-blue-500" />
+                    <MapPinIcon size={16} className="mr-2 text-homelight-primary" />
                     <span className="font-opensans">{property.location}</span>
                   </div>
                 </div>
@@ -495,11 +404,11 @@ export function PropertyGallery() {
 
                 {/* Property Details with Enhanced Icons */}
                 <div className="flex items-center justify-between pt-2 border-t border-gray-100">
-                  <div className="flex items-center space-x-6">
+                  <div className="flex items-center space-x-4">
                     {property.beds && (
                       <div className="flex items-center text-gray-600 text-sm font-medium">
-                        <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mr-2">
-                          <BedIcon size={14} className="text-blue-600" />
+                        <div className="w-6 h-6 rounded-full bg-homelight-primary/10 flex items-center justify-center mr-2">
+                          <BedIcon size={12} className="text-homelight-primary" />
                         </div>
                         <span className="font-montserrat font-semibold">{property.beds}</span>
                         <span className="text-xs text-gray-400 ml-1">beds</span>
@@ -507,16 +416,16 @@ export function PropertyGallery() {
                     )}
                     {property.baths && (
                       <div className="flex items-center text-gray-600 text-sm font-medium">
-                        <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mr-2">
-                          <BathIcon size={14} className="text-blue-600" />
+                        <div className="w-6 h-6 rounded-full bg-homelight-primary/10 flex items-center justify-center mr-2">
+                          <BathIcon size={12} className="text-homelight-primary" />
                         </div>
                         <span className="font-montserrat font-semibold">{property.baths}</span>
                         <span className="text-xs text-gray-400 ml-1">baths</span>
                       </div>
                     )}
                     <div className="flex items-center text-gray-600 text-sm font-medium">
-                      <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mr-2">
-                        <Square size={14} className="text-blue-600" />
+                      <div className="w-6 h-6 rounded-full bg-homelight-primary/10 flex items-center justify-center mr-2">
+                        <Square size={12} className="text-homelight-primary" />
                       </div>
                       <span className="font-montserrat font-semibold">{property.area}</span>
                     </div>
@@ -524,16 +433,16 @@ export function PropertyGallery() {
                 </div>
 
                 {/* Price & CTA */}
-                <div className="flex items-center justify-between pt-4">
+                <div className="flex items-center justify-between pt-3">
                   <div className="space-y-1">
-                    <p className="text-2xl font-bold text-gray-900 font-montserrat">
+                    <p className="text-xl font-bold text-gray-900 font-montserrat">
                       {property.price}
                     </p>
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 font-montserrat">
+                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 font-montserrat">
                       {property.type}
                     </span>
                   </div>
-                  <button className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 font-montserrat text-sm">
+                  <button className="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-sm">
                     View Details
                   </button>
                 </div>
@@ -542,11 +451,27 @@ export function PropertyGallery() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <button className="px-8 py-3 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 transition duration-300 shadow-md hover:shadow-lg font-montserrat">
-            View All Properties
-          </button>
-        </div>
+        {!showAllProperties && (
+          <div className="mt-12 text-center">
+            <button 
+              onClick={() => setShowAllProperties(true)}
+              className="px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-sm hover:shadow-md"
+            >
+              View All Properties
+            </button>
+          </div>
+        )}
+
+        {showAllProperties && (
+          <div className="mt-12 text-center">
+            <button 
+              onClick={() => setShowAllProperties(false)}
+              className="px-8 py-3 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 shadow-sm hover:shadow-md"
+            >
+              Show Less
+            </button>
+          </div>
+        )}
 
         {/* Property Detail Modal with Enhanced Accessibility */}
         {isModalOpen && selectedProperty && (
@@ -579,7 +504,7 @@ export function PropertyGallery() {
                 <button
                   onClick={closeModal}
                   aria-label="Close property details"
-                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[40px] min-h-[40px]"
+                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-homelight-primary min-w-[40px] min-h-[40px]"
                 >
                   <X size={24} />
                 </button>
@@ -691,7 +616,7 @@ export function PropertyGallery() {
                         </div>
 
                         <div className="space-y-3">
-                          <button className="w-full flex items-center justify-center px-4 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+                          <button className="w-full flex items-center justify-center px-4 py-3 bg-homelight-primary text-white font-semibold rounded-lg hover:bg-homelight-primary/90 transition-colors">
                             <Phone size={16} className="mr-2" />
                             Call Agent
                           </button>

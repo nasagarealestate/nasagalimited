@@ -5,9 +5,23 @@
 /* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL */
 
 /* Import Google Fonts for better typography */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&display=swap');
+
+/* CSS Custom Properties for HomeLight Design System */
+:root {
+  --color-primary-blue: #1192e5;
+  --color-secondary-blue: #46b6ff;
+  --color-tertiary-blue: #0c6eba;
+  --color-text-primary: #273653;
+  --color-text-secondary: #6b7280;
+  --color-text-light: #9ca3af;
+}
 
 /* Custom font families */
+.font-open-sans {
+  font-family: 'Open Sans', 'San Francisco', -apple-system, HelveticaNeue, helvetica, roboto, 'droid serif', arial, sans-serif;
+}
+
 .font-montserrat {
   font-family: 'Montserrat', sans-serif;
 }

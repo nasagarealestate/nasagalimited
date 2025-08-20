@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { MenuIcon, XIcon, HomeIcon, BuildingIcon, WrenchIcon, PhoneIcon, UsersIcon } from 'lucide-react';
+import { MenuIcon, XIcon } from 'lucide-react';
 import { ROUTES } from '../router';
 
 export function Header() {
@@ -30,92 +30,113 @@ export function Header() {
   };
 
   const navigationItems = [
-    { href: ROUTES.HOME, label: 'Home', icon: <HomeIcon size={18} />, type: 'link' as const },
-    { href: ROUTES.ABOUT, label: 'About Us', icon: <UsersIcon size={18} />, type: 'link' as const },
-    { href: 'properties', label: 'Properties', icon: <BuildingIcon size={18} />, type: 'section' as const },
-    { href: 'services', label: 'Services', icon: <WrenchIcon size={18} />, type: 'section' as const },
-    { href: 'contact', label: 'Contact', icon: <PhoneIcon size={18} />, type: 'section' as const }
+    { href: ROUTES.HOME, label: 'Home', type: 'link' as const },
+    { href: ROUTES.ABOUT, label: 'About Us', type: 'link' as const },
+    { href: 'properties', label: 'Properties', type: 'section' as const },
+    { href: 'services', label: 'Services', type: 'section' as const },
   ];
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 shadow-lg backdrop-blur-sm">
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
+    <header className="fixed top-0 z-50 w-full bg-homelight-primary shadow-lg">
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo Section */}
           <div className="flex-shrink-0">
-            <h1 className="text-3xl font-bold text-white tracking-wide font-montserrat">
-              NASAGA <span className="text-blue-300">LIMITED</span>
-            </h1>
+            <div className="flex items-center space-x-3">
+              <img 
+                src="/logo-icon.svg" 
+                alt="Nasaga Limited Logo" 
+                className="h-10 w-10"
+              />
+              <h1 className="text-2xl font-semibold text-white font-open-sans">
+                NASAGA <span className="text-white">LIMITED</span>
+              </h1>
+            </div>
           </div>
           
-          <nav className="hidden lg:flex items-center space-x-8">
+          {/* Desktop Navigation - Centered */}
+          <nav className="hidden lg:flex items-center justify-center flex-1 space-x-8">
             {navigationItems.map((item, index) => (
               item.type === 'link' ? (
                 <Link 
                   key={index}
                   to={item.href} 
-                  className="flex items-center space-x-2 text-gray-200 hover:text-blue-300 font-medium transition-all duration-300 hover:scale-105 group py-2 px-3 rounded-lg hover:bg-blue-800/20"
+                  className="text-white hover:text-white/80 font-medium transition-colors duration-200 font-open-sans text-[15px]"
                 >
-                  <span className="group-hover:rotate-12 transition-transform duration-300">
-                    {item.icon}
-                  </span>
-                  <span className="relative">
-                    {item.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 group-hover:w-full"></span>
-                  </span>
+                  {item.label}
                 </Link>
               ) : (
                 <button
                   key={index}
                   onClick={() => handleSectionNavigation(item.href)}
-                  className="flex items-center space-x-2 text-gray-200 hover:text-blue-300 font-medium transition-all duration-300 hover:scale-105 group py-2 px-3 rounded-lg hover:bg-blue-800/20"
+                  className="text-white hover:text-white/80 font-medium transition-colors duration-200 font-open-sans text-[15px]"
                 >
-                  <span className="group-hover:rotate-12 transition-transform duration-300">
-                    {item.icon}
-                  </span>
-                  <span className="relative">
-                    {item.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 group-hover:w-full"></span>
-                  </span>
+                  {item.label}
                 </button>
               )
             ))}
           </nav>
 
-          <button 
-            className="lg:hidden text-gray-200 hover:text-blue-300 transition-colors duration-300 p-2 rounded-lg hover:bg-blue-800/20" 
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <XIcon size={28} /> : <MenuIcon size={28} />}
-          </button>
+          {/* Right Section - Contact Button & Mobile Menu */}
+          <div className="flex items-center space-x-4">
+            {/* Contact Us Button - Desktop Only */}
+            <button
+              onClick={() => handleSectionNavigation('contact')}
+              className="hidden lg:inline-flex items-center px-4 py-2 bg-white text-homelight-primary font-semibold rounded-md hover:bg-gray-50 transition-colors duration-200 font-open-sans text-sm"
+            >
+              Contact Us
+            </button>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className="lg:hidden text-white hover:text-white/80 transition-colors duration-200 p-2" 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
+      {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-gradient-to-r from-gray-800 via-blue-800 to-gray-800 backdrop-blur-sm border-t border-blue-700/30">
-          <nav className="container mx-auto px-6 py-6">
-            <div className="flex flex-col space-y-4">
+        <div className="lg:hidden bg-homelight-primary border-t border-white/20">
+          <nav className="container mx-auto px-6 py-4">
+            <div className="space-y-3">
               {navigationItems.map((item, index) => (
                 item.type === 'link' ? (
                   <Link 
                     key={index}
                     to={item.href} 
-                    className="flex items-center space-x-3 text-gray-200 hover:text-blue-300 font-medium transition-all duration-300 py-3 px-4 rounded-lg hover:bg-blue-700/20"
+                    className="block text-white hover:text-white/80 font-medium transition-colors duration-200 py-2 font-open-sans"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    <span className="text-blue-300">{item.icon}</span>
-                    <span>{item.label}</span>
+                    {item.label}
                   </Link>
                 ) : (
                   <button
                     key={index}
-                    onClick={() => handleSectionNavigation(item.href)}
-                    className="flex items-center space-x-3 text-gray-200 hover:text-blue-300 font-medium transition-all duration-300 py-3 px-4 rounded-lg hover:bg-blue-700/20"
+                    onClick={() => {
+                      handleSectionNavigation(item.href);
+                      setIsMenuOpen(false);
+                    }}
+                    className="block text-white hover:text-white/80 font-medium transition-colors duration-200 py-2 font-open-sans w-full text-left"
                   >
-                    <span className="text-blue-300">{item.icon}</span>
-                    <span>{item.label}</span>
+                    {item.label}
                   </button>
                 )
               ))}
+              
+              {/* Mobile Contact Button */}
+              <button
+                onClick={() => {
+                  handleSectionNavigation('contact');
+                  setIsMenuOpen(false);
+                }}
+                className="block w-full mt-4 px-4 py-2 bg-white text-homelight-primary font-semibold rounded-md hover:bg-gray-50 transition-colors duration-200 font-open-sans text-sm"
+              >
+                Contact Us
+              </button>
             </div>
           </nav>
         </div>

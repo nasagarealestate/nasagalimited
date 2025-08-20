@@ -24,52 +24,52 @@ export function Contact() {
     <section id="contact" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Contact Us</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold text-homelight-text mb-4 font-open-sans">Contact Us</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto font-open-sans">
             Get in touch with our team of experts to discuss your real estate needs
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           <div>
-            <div className="bg-blue-700 text-white p-8 rounded-xl">
-              <h3 className="text-2xl font-semibold mb-6">Get In Touch</h3>
+            <div className="bg-homelight-primary text-white p-8 rounded-xl">
+              <h3 className="text-2xl font-semibold mb-6 font-open-sans">Get In Touch</h3>
               <form>
                 <div className="mb-4">
-                  <label htmlFor="name" className="block mb-2">
+                  <label htmlFor="name" className="block mb-2 font-open-sans">
                     Full Name
                   </label>
                   <input
                     type="text"
                     id="name"
-                    className="w-full px-4 py-2 rounded-md bg-blue-600 text-white placeholder-blue-200 border border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-4 py-2 rounded-md bg-homelight-primary/80 text-white placeholder-blue-200 border border-homelight-secondary focus:outline-none focus:ring-2 focus:ring-homelight-secondary font-open-sans"
                     placeholder="Your name"
                   />
                 </div>
                 <div className="mb-4">
-                  <label htmlFor="email" className="block mb-2">
+                  <label htmlFor="email" className="block mb-2 font-open-sans">
                     Email Address
                   </label>
                   <input
                     type="email"
                     id="email"
-                    className="w-full px-4 py-2 rounded-md bg-blue-600 text-white placeholder-blue-200 border border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-4 py-2 rounded-md bg-homelight-primary/80 text-white placeholder-blue-200 border border-homelight-secondary focus:outline-none focus:ring-2 focus:ring-homelight-secondary font-open-sans"
                     placeholder="Your email"
                   />
                 </div>
                 <div className="mb-4">
-                  <label htmlFor="message" className="block mb-2">
+                  <label htmlFor="message" className="block mb-2 font-open-sans">
                     Message
                   </label>
                   <textarea
                     id="message"
                     rows={4}
-                    className="w-full px-4 py-2 rounded-md bg-blue-600 text-white placeholder-blue-200 border border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-4 py-2 rounded-md bg-homelight-primary/80 text-white placeholder-blue-200 border border-homelight-secondary focus:outline-none focus:ring-2 focus:ring-homelight-secondary font-open-sans"
                     placeholder="How can we help you?"
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-white text-blue-700 font-semibold py-3 px-6 rounded-md hover:bg-blue-50 transition duration-300"
+                  className="w-full bg-white text-homelight-primary font-semibold py-3 px-6 rounded-md hover:bg-gray-50 transition duration-300 font-open-sans"
                 >
                   Send Message
                 </button>
@@ -78,35 +78,35 @@ export function Contact() {
           </div>
           <div>
             <div className="bg-gray-50 p-8 rounded-xl">
-              <h3 className="text-2xl font-semibold mb-6 text-gray-900">
+              <h3 className="text-2xl font-semibold mb-6 text-homelight-text font-open-sans">
                 Our Offices
               </h3>
               <div className="space-y-8">
                 {offices.map((office, index) => (
                   <div key={index} className="flex gap-4">
                     <div className="flex-shrink-0 mt-1">
-                      <MapPinIcon className="h-6 w-6 text-blue-600" />
+                      <MapPinIcon className="h-6 w-6 text-homelight-primary" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-900">
+                      <h4 className="text-lg font-semibold text-homelight-text font-open-sans">
                         {office.title}
                       </h4>
-                      <p className="text-gray-600 mb-2">{office.address}</p>
+                      <p className="text-gray-600 mb-2 font-open-sans">{office.address}</p>
                       <div className="flex items-center text-gray-700">
                         <PhoneIcon className="h-4 w-4 mr-2" />
-                        <span>{office.phone}</span>
+                        <span className="font-open-sans">{office.phone}</span>
                       </div>
                     </div>
                   </div>
                 ))}
                 <div className="pt-4 border-t border-gray-200">
-                  <h4 className="text-lg font-semibold mb-3 text-gray-900">
+                  <h4 className="text-lg font-semibold mb-3 text-homelight-text font-open-sans">
                     Connect With Us
                   </h4>
                   <div className="flex gap-4">
                     <a
                       href="#"
-                      className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition"
+                      className="bg-homelight-primary text-white p-2 rounded-full hover:bg-homelight-primary/90 transition"
                     >
                       <svg
                         className="h-5 w-5"
@@ -123,7 +123,7 @@ export function Contact() {
                     </a>
                     <a
                       href="#"
-                      className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition"
+                      className="bg-homelight-primary text-white p-2 rounded-full hover:bg-homelight-primary/90 transition"
                     >
                       <svg
                         className="h-5 w-5"
@@ -136,7 +136,7 @@ export function Contact() {
                     </a>
                     <a
                       href="#"
-                      className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition"
+                      className="bg-homelight-primary text-white p-2 rounded-full hover:bg-homelight-primary/90 transition"
                     >
                       <svg
                         className="h-5 w-5"
