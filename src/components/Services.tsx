@@ -17,13 +17,17 @@ export function Services() {
   const services: Service[] = [
     {
       icon: (
-        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-homelight-primary/10 rounded-full group-hover:bg-homelight-primary/20 transition-colors duration-300">
+        <div 
+          className="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full group-hover:scale-110 transition-all duration-300"
+          style={{ backgroundColor: 'rgb(238, 240, 246)' }}
+        >
           <svg 
-            className="w-8 h-8 text-homelight-primary group-hover:text-homelight-primary transition-colors duration-300" 
+            className="w-8 h-8 transition-colors duration-300" 
             fill="currentColor" 
             viewBox="0 0 24 24"
             role="img"
             aria-label="Property Sales Icon"
+            style={{ color: 'rgb(70, 182, 255)' }}
           >
             <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
           </svg>
@@ -34,15 +38,19 @@ export function Services() {
     },
     {
       icon: (
-        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-homelight-primary/10 rounded-full group-hover:bg-homelight-primary/20 transition-colors duration-300">
+        <div 
+          className="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full group-hover:scale-110 transition-all duration-300"
+          style={{ backgroundColor: 'rgb(238, 240, 246)' }}
+        >
           <svg 
-            className="w-8 h-8 text-homelight-primary group-hover:text-homelight-primary transition-colors duration-300" 
+            className="w-8 h-8 transition-colors duration-300" 
             fill="none" 
             stroke="currentColor"
             strokeWidth="2"
             viewBox="0 0 24 24"
             role="img"
             aria-label="Property Leasing Icon"
+            style={{ color: 'rgb(70, 182, 255)' }}
           >
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
             <polyline points="9,22 9,12 15,12 15,22"/>
@@ -54,15 +62,19 @@ export function Services() {
     },
     {
       icon: (
-        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors duration-300">
+        <div 
+          className="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full group-hover:scale-110 transition-all duration-300"
+          style={{ backgroundColor: 'rgb(238, 240, 246)' }}
+        >
           <svg 
-            className="w-8 h-8 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" 
+            className="w-8 h-8 transition-colors duration-300" 
             fill="none" 
             stroke="currentColor"
             strokeWidth="2"
             viewBox="0 0 24 24"
             role="img"
             aria-label="Investment Opportunities Icon"
+            style={{ color: 'rgb(70, 182, 255)' }}
           >
             <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
           </svg>
@@ -73,15 +85,19 @@ export function Services() {
     },
     {
       icon: (
-        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-homelight-primary/10 rounded-full group-hover:bg-homelight-primary/20 transition-colors duration-300">
+        <div 
+          className="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full group-hover:scale-110 transition-all duration-300"
+          style={{ backgroundColor: 'rgb(238, 240, 246)' }}
+        >
           <svg 
-            className="w-8 h-8 text-homelight-primary group-hover:text-homelight-primary transition-colors duration-300" 
+            className="w-8 h-8 transition-colors duration-300" 
             fill="none" 
             stroke="currentColor"
             strokeWidth="2"
             viewBox="0 0 24 24"
             role="img"
             aria-label="Property Development Icon"
+            style={{ color: 'rgb(70, 182, 255)' }}
           >
             <path d="M3 21h18"/>
             <path d="M5 21V7l8-4v18"/>
@@ -94,15 +110,19 @@ export function Services() {
     },
     {
       icon: (
-        <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-homelight-primary/10 rounded-full group-hover:bg-homelight-primary/20 transition-colors duration-300">
+        <div 
+          className="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full group-hover:scale-110 transition-all duration-300"
+          style={{ backgroundColor: 'rgb(238, 240, 246)' }}
+        >
           <svg 
-            className="w-8 h-8 text-homelight-primary group-hover:text-homelight-primary transition-colors duration-300" 
+            className="w-8 h-8 transition-colors duration-300" 
             fill="none" 
             stroke="currentColor"
             strokeWidth="2"
             viewBox="0 0 24 24"
             role="img"
             aria-label="Facility Management Icon"
+            style={{ color: 'rgb(70, 182, 255)' }}
           >
             <path d="M9 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2z"/>
             <path d="M21 11h-4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2z"/>
@@ -136,18 +156,21 @@ export function Services() {
             : 'opacity-0 translate-y-8'
           }
         `}>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 font-montserrat tracking-tight">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
             Our Services
           </h2>
-          <div className="w-24 h-1 bg-homelight-primary mx-auto rounded-full mb-6"></div>
-          <p className="text-gray-600 max-w-3xl mx-auto text-xl font-opensans leading-relaxed">
+          <div 
+            className="w-24 h-1 mx-auto rounded-full mb-6"
+            style={{ backgroundColor: 'rgb(70, 182, 255)' }}
+          ></div>
+          <p className="text-gray-600 max-w-3xl mx-auto text-xl leading-relaxed">
             Comprehensive real estate solutions tailored to meet your needs with 
             unmatched expertise and personalized service.
           </p>
         </div>
 
         {/* Centered Services Layout */}
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Skip link for keyboard users */}
           <a 
             href="#services-grid"
@@ -159,7 +182,7 @@ export function Services() {
           {/* Services Grid - Clean Layout */}
           <div 
             id="services-grid"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 place-items-center"
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-12 justify-items-center"
             role="grid"
             aria-label="Our services"
           >
@@ -174,29 +197,6 @@ export function Services() {
                 />
               </div>
             ))}
-            
-            {/* Ready to Get Started? CTA Card as 6th item */}
-            <div className="w-full max-w-sm">
-              <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col justify-center text-center">
-                <h3 className="text-xl font-bold text-gray-900 mb-4 font-montserrat">
-                  Ready to Get Started?
-                </h3>
-                <p className="text-gray-600 mb-6 font-opensans text-sm leading-relaxed">
-                  Let's discuss how we can help you achieve your real estate goals with our comprehensive services.
-                </p>
-                <button 
-                  onClick={() => handleLearnMore('Contact')}
-                  className="
-                    inline-flex items-center justify-center px-6 py-3 bg-homelight-primary text-white font-semibold rounded-lg 
-                    hover:bg-homelight-primary/90 focus:bg-homelight-primary/90 transition-colors duration-200
-                    focus:outline-none focus:ring-2 focus:ring-homelight-primary focus:ring-offset-2
-                    font-opensans text-sm
-                  "
-                >
-                  Contact Us Today
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       </div>

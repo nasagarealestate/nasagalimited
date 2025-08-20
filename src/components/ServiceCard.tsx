@@ -37,13 +37,13 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
     <article
       ref={elementRef}
       className={`
-        group relative bg-white/80 backdrop-blur-md rounded-2xl p-6 
-        border border-white/20 shadow-lg
+        group relative bg-white rounded-lg p-8 
+        border border-gray-100 
         cursor-pointer transition-all duration-300 ease-out
-        hover:scale-[1.03] hover:shadow-2xl hover:bg-white/90
-        focus:scale-[1.03] focus:shadow-2xl focus:bg-white/90
-        focus:outline-none focus:ring-2 focus:ring-homelight-secondary focus:ring-offset-2
-        transform-gpu
+        hover:scale-[1.02] hover:-translate-y-1
+        focus:scale-[1.02] focus:-translate-y-1
+        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+        h-full
         ${hasIntersected 
           ? 'opacity-100 translate-y-0' 
           : 'opacity-0 translate-y-8'
@@ -51,6 +51,9 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       `}
       style={{
         transitionDelay: hasIntersected ? `${index * 100}ms` : '0ms',
+        boxShadow: isActive 
+          ? 'rgba(0, 0, 0, 0.15) 0px 8px 24px 0px' 
+          : 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px'
       }}
       tabIndex={0}
       role="button"
@@ -63,41 +66,40 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       onKeyDown={handleKeyDown}
       onClick={onLearnMore}
     >
-      {/* Glassmorphism background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-homelight-primary/10 to-white/30 rounded-2xl opacity-60" />
-      
       {/* Content */}
-      <div className="relative z-10">
+      <div className="flex flex-col h-full">
         {/* Icon with hover animation */}
         <div className={`
-          mb-4 transition-transform duration-300 ease-out
-          ${isActive ? 'scale-110 rotate-3' : 'scale-100'}
+          mb-6 transition-transform duration-300 ease-out
+          ${isActive ? 'scale-105' : 'scale-100'}
         `}>
           {icon}
         </div>
 
         {/* Title */}
-        <h3 className="text-xl font-semibold mb-3 text-homelight-text font-open-sans">
+        <h3 className="text-xl font-bold mb-4 text-gray-900 leading-tight">
           {title}
         </h3>
 
         {/* Description */}
         <p 
           id={`service-desc-${index}`}
-          className="text-gray-600 font-open-sans leading-relaxed mb-4"
+          className="text-gray-600 leading-relaxed mb-6 flex-grow"
         >
           {description}
         </p>
 
         {/* Learn More CTA - appears on hover/focus */}
         <div className={`
-          flex items-center text-homelight-primary font-medium font-open-sans
+          flex items-center font-medium
           transition-all duration-300 ease-out
           ${isActive 
             ? 'opacity-100 translate-y-0' 
-            : 'opacity-0 translate-y-2'
+            : 'opacity-70 translate-y-1'
           }
-        `}>
+        `}
+        style={{ color: 'rgb(70, 182, 255)' }}
+        >
           <span className="mr-2">Learn More</span>
           <ChevronRight 
             size={16} 
@@ -108,13 +110,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
           />
         </div>
       </div>
-
-      {/* Hover glow effect */}
-      <div className={`
-        absolute inset-0 rounded-2xl bg-gradient-to-r from-homelight-primary/20 to-homelight-secondary/20
-        transition-opacity duration-300
-        ${isActive ? 'opacity-100' : 'opacity-0'}
-      `} />
     </article>
   );
 };

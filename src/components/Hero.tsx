@@ -52,15 +52,29 @@ export function Hero() {
               }`}
               style={{ transitionDelay: "0.6s" }}
             >
+              {/* Primary Button - HomeLight Design System Pattern */}
               <a 
                 href="#properties" 
-                className="inline-flex items-center justify-center px-6 py-3 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors duration-300 text-center"
+                className="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-700 font-normal text-base rounded border border-blue-200 hover:bg-blue-50 hover:border-blue-300 transition-all duration-300 text-center shadow-sm hover:shadow-md"
+                style={{
+                  color: 'rgb(70, 182, 255)',
+                  backgroundColor: 'rgb(255, 255, 255)',
+                  borderColor: 'rgb(238, 240, 246)',
+                  boxShadow: 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px'
+                }}
               >
                 View Properties
               </a>
+              
+              {/* Secondary Button - HomeLight Design System Pattern */}
               <a 
                 href="#contact" 
-                className="inline-flex items-center justify-center px-6 py-3 border-2 border-blue-700 text-blue-700 font-semibold rounded-lg hover:bg-blue-700 hover:text-white transition-all duration-300 text-center"
+                className="inline-flex items-center justify-center px-6 py-3 bg-blue-700 text-white font-normal text-base rounded border border-blue-700 hover:bg-blue-800 hover:border-blue-800 transition-all duration-300 text-center shadow-sm hover:shadow-md"
+                style={{
+                  backgroundColor: 'rgb(17, 146, 229)',
+                  borderColor: 'rgb(17, 146, 229)',
+                  boxShadow: 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px'
+                }}
               >
                 Contact Us
               </a>
