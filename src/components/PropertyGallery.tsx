@@ -333,15 +333,23 @@ export function PropertyGallery() {
           <div className="flex justify-between items-center mb-8">
             <div></div>
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-gray-900 font-montserrat tracking-tight">
+              <h2 className="text-3xl font-bold text-gray-900 tracking-tight">
                 Featured Properties
               </h2>
-              <div className="w-24 h-1 bg-homelight-primary mx-auto rounded-full"></div>
+              <div 
+                className="w-24 h-1 mx-auto rounded-full"
+                style={{ backgroundColor: 'rgb(70, 182, 255)' }}
+              ></div>
             </div>
             {/* High-Contrast Toggle */}
             <button
               onClick={toggleHighContrast}
-              className="p-3 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-homelight-primary focus:ring-offset-2 shadow-sm"
+              className="p-3 rounded-lg bg-white border border-gray-200 hover:bg-gray-50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-sm hover:shadow-md"
+              style={{
+                backgroundColor: 'rgb(255, 255, 255)',
+                borderColor: 'rgb(229, 231, 235)',
+                boxShadow: 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px'
+              }}
               aria-label={isHighContrast ? "Disable high contrast mode" : "Enable high contrast mode"}
               title={isHighContrast ? "Disable high contrast" : "Enable high contrast"}
             >
@@ -368,7 +376,16 @@ export function PropertyGallery() {
               tabIndex={0}
               role="button"
               aria-label={`View details for ${property.title}. Price: ${property.price}. Location: ${property.location}.`}
-              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-2 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-homelight-primary focus:ring-offset-4 border border-gray-100"
+              className="bg-white rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-4 border border-gray-100"
+              style={{
+                boxShadow: 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = 'rgba(0, 0, 0, 0.15) 0px 4px 12px 0px';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px';
+              }}
               onClick={() => {
                 modalTriggerRef.current = document.activeElement as HTMLDivElement;
                 openModal(property);
@@ -438,11 +455,25 @@ export function PropertyGallery() {
                     <p className="text-xl font-bold text-gray-900 font-montserrat">
                       {property.price}
                     </p>
-                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 font-montserrat">
+                    <span 
+                      className="inline-flex items-center px-3 py-1 rounded text-xs font-normal font-montserrat"
+                      style={{
+                        backgroundColor: 'rgb(238, 240, 246)',
+                        color: 'rgb(70, 182, 255)'
+                      }}
+                    >
                       {property.type}
                     </span>
                   </div>
-                  <button className="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-sm">
+                  <button 
+                    className="px-4 py-2 bg-white text-blue-600 font-normal rounded border hover:bg-blue-50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-sm shadow-sm hover:shadow-md"
+                    style={{
+                      backgroundColor: 'rgb(255, 255, 255)',
+                      color: 'rgb(70, 182, 255)',
+                      borderColor: 'rgb(238, 240, 246)',
+                      boxShadow: 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px'
+                    }}
+                  >
                     View Details
                   </button>
                 </div>
@@ -455,7 +486,13 @@ export function PropertyGallery() {
           <div className="mt-12 text-center">
             <button 
               onClick={() => setShowAllProperties(true)}
-              className="px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-sm hover:shadow-md"
+              className="px-8 py-3 bg-white text-blue-600 font-normal rounded border hover:bg-blue-50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-sm hover:shadow-md"
+              style={{
+                backgroundColor: 'rgb(255, 255, 255)',
+                color: 'rgb(70, 182, 255)',
+                borderColor: 'rgb(238, 240, 246)',
+                boxShadow: 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px'
+              }}
             >
               View All Properties
             </button>
@@ -466,7 +503,13 @@ export function PropertyGallery() {
           <div className="mt-12 text-center">
             <button 
               onClick={() => setShowAllProperties(false)}
-              className="px-8 py-3 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 shadow-sm hover:shadow-md"
+              className="px-8 py-3 bg-white text-gray-600 font-normal rounded border border-gray-200 hover:bg-gray-50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 shadow-sm hover:shadow-md"
+              style={{
+                backgroundColor: 'rgb(255, 255, 255)',
+                color: 'rgb(107, 114, 128)',
+                borderColor: 'rgb(229, 231, 235)',
+                boxShadow: 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px'
+              }}
             >
               Show Less
             </button>
@@ -563,7 +606,13 @@ export function PropertyGallery() {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div>
                       <div className="flex items-center space-x-4 mb-4">
-                        <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">
+                        <span 
+                          className="px-3 py-1 rounded text-sm font-normal"
+                          style={{
+                            backgroundColor: 'rgb(238, 240, 246)',
+                            color: 'rgb(70, 182, 255)'
+                          }}
+                        >
                           {selectedProperty.type}
                         </span>
                         <span className="text-2xl font-bold text-gray-900 font-montserrat">
@@ -583,20 +632,38 @@ export function PropertyGallery() {
                       {/* Property Specifications */}
                       <div className="grid grid-cols-3 gap-4 mb-6">
                         {selectedProperty.beds && (
-                          <div className="text-center p-3 bg-gray-50 rounded-lg">
+                          <div 
+                            className="text-center p-3 rounded-lg border"
+                            style={{
+                              backgroundColor: 'rgb(249, 250, 251)',
+                              borderColor: 'rgb(229, 231, 235)'
+                            }}
+                          >
                             <BedIcon size={24} className="mx-auto mb-2 text-gray-600" />
                             <div className="text-sm font-medium text-gray-900">{selectedProperty.beds}</div>
                             <div className="text-xs text-gray-500">Bedrooms</div>
                           </div>
                         )}
                         {selectedProperty.baths && (
-                          <div className="text-center p-3 bg-gray-50 rounded-lg">
+                          <div 
+                            className="text-center p-3 rounded-lg border"
+                            style={{
+                              backgroundColor: 'rgb(249, 250, 251)',
+                              borderColor: 'rgb(229, 231, 235)'
+                            }}
+                          >
                             <BathIcon size={24} className="mx-auto mb-2 text-gray-600" />
                             <div className="text-sm font-medium text-gray-900">{selectedProperty.baths}</div>
                             <div className="text-xs text-gray-500">Bathrooms</div>
                           </div>
                         )}
-                        <div className="text-center p-3 bg-gray-50 rounded-lg">
+                        <div 
+                          className="text-center p-3 rounded-lg border"
+                          style={{
+                            backgroundColor: 'rgb(249, 250, 251)',
+                            borderColor: 'rgb(229, 231, 235)'
+                          }}
+                        >
                           <Square size={24} className="mx-auto mb-2 text-gray-600" />
                           <div className="text-sm font-medium text-gray-900">{selectedProperty.area}</div>
                           <div className="text-xs text-gray-500">Area</div>
@@ -616,17 +683,38 @@ export function PropertyGallery() {
                         </div>
 
                         <div className="space-y-3">
-                          <button className="w-full flex items-center justify-center px-4 py-3 bg-homelight-primary text-white font-semibold rounded-lg hover:bg-homelight-primary/90 transition-colors">
+                          <button 
+                            className="w-full flex items-center justify-center px-4 py-3 bg-blue-600 text-white font-normal rounded border border-blue-600 hover:bg-blue-700 hover:border-blue-700 transition-all duration-300 shadow-sm hover:shadow-md"
+                            style={{
+                              backgroundColor: 'rgb(17, 146, 229)',
+                              borderColor: 'rgb(17, 146, 229)',
+                              boxShadow: 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px'
+                            }}
+                          >
                             <Phone size={16} className="mr-2" />
                             Call Agent
                           </button>
-                          <button className="w-full flex items-center justify-center px-4 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors">
+                          <button 
+                            className="w-full flex items-center justify-center px-4 py-3 bg-white text-blue-600 font-normal rounded border hover:bg-blue-50 transition-all duration-300 shadow-sm hover:shadow-md"
+                            style={{
+                              backgroundColor: 'rgb(255, 255, 255)',
+                              color: 'rgb(70, 182, 255)',
+                              borderColor: 'rgb(238, 240, 246)',
+                              boxShadow: 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px'
+                            }}
+                          >
                             <Calendar size={16} className="mr-2" />
                             Schedule Tour
                           </button>
                           <button
                             onClick={() => handleShare(selectedProperty)}
-                            className="w-full flex items-center justify-center px-4 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors"
+                            className="w-full flex items-center justify-center px-4 py-3 bg-white text-gray-600 font-normal rounded border border-gray-200 hover:bg-gray-50 transition-all duration-300 shadow-sm hover:shadow-md"
+                            style={{
+                              backgroundColor: 'rgb(255, 255, 255)',
+                              color: 'rgb(107, 114, 128)',
+                              borderColor: 'rgb(229, 231, 235)',
+                              boxShadow: 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px'
+                            }}
                           >
                             <Share2 size={16} className="mr-2" />
                             Share Property
